@@ -1,0 +1,9 @@
+{
+  "name": "minecraft-avatar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rayriffy/minecraft-avatar",
+  "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
+  "license": "MIT",
+  "private": true
+}
