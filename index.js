@@ -33,7 +33,7 @@ server.get('/avatar/:user', async (req, res) => {
 
       const payload = {
         method: 'GET',
-        url: `https://crafatar.com/avatars/${id}?overlay&default`,
+        url: `https://crafatar.com/avatars/${id}?size=32&overlay&default`,
         responseType: 'arraybuffer'
       }
 
