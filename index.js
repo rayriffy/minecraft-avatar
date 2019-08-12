@@ -19,7 +19,7 @@ server.use((req, res, next) => {
   next()
 })
 
-server.get('/avatar/:user', async (req, res) => {
+server.get('/avatar/:user.png', async (req, res) => {
   const {user} = req.params
 
   // Get profile
