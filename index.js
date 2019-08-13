@@ -1,13 +1,15 @@
-const axios = require('axios')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
 
-const getProfile = async user => {
-  return axios.get(`https://api.mojang.com/users/profiles/minecraft/${user}`)
-}
-
 const server = express()
+
+const routeAvatar = require('./routes/avatar')
+const routeCape = require('./routes/cape')
+const routeSkin = require('./routes/skin')
+
+const routeBody = require('./routes/render/body')
+const routeHead = require('./routes/render/head')
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({extended: true}))
@@ -19,54 +21,23 @@ server.use((req, res, next) => {
   next()
 })
 
-server.get('/avatar/:user.png', async (req, res) => {
-  const {user} = req.params
-
-  // Get profile
-  try {
-    const profile = await getProfile(user)
-
-    try {
-      const {id} = profile.data
-
-      console.log(profile.data)
-
-      const payload = {
-        method: 'GET',
-        url: `https://crafatar.com/avatars/${id}?size=32&overlay&default`,
-        responseType: 'arraybuffer'
-      }
-
-      const avatar = await axios(payload)
-
-      res.type('png')
-
-      return res.end(avatar.data, 'binary')
-    } catch (e) {
-      if (e.response && e.response.status === 422) {
-        return res.status(400).send({
-          status: 'failure',
-          code: 422,
-          response: {
-            message: 'Invalid UUID returned from avatar API',
-          },
-        })
-      } else {
-        console.log(e)
-      }
-    }
-  } catch (e) {
-    if (e.response.status === 204) {
-      return res.status(400).send({
-        status: 'failure',
-        code: 204,
-        response: {
-          message: 'UUID not found',
-        },
-      })
-    }
-  }
+server.get('/', (req, res) => {
+  res.status(200).send({
+    status: 'success',
+    code: 201,
+    response: {
+      title: 'Minecraft Avatar Fetching',
+      createdBy: '@rayriffy',
+      docs: 'https://github.com/rayriffy/minecraft-avatar'
+    },
+  })
 })
+
+server.use('/avatar', routeAvatar)
+server.use('/cape', routeCape)
+server.use('/skin', routeSkin)
+server.use('/render/body', routeBody)
+server.use('/render/head', routeHead)
 
 server.all('*', (req, res) => {
   res.status(404).send({
