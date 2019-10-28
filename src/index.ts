@@ -4,12 +4,7 @@ import express from 'express'
 
 const server = express()
 
-import routeAvatar from './routes/avatar'
-import routeCape from './routes/cape'
-import routeSkin from './routes/skin'
-
-import routeBody from './routes/render/body'
-import routeHead from './routes/render/head'
+import V1Routes from './v1'
 
 server.use(bodyParser.json())
 server.use(cors())
@@ -31,11 +26,7 @@ server.get('/', (req, res) => {
   })
 })
 
-server.use('/avatar', routeAvatar)
-server.use('/cape', routeCape)
-server.use('/skin', routeSkin)
-server.use('/render/body', routeBody)
-server.use('/render/head', routeHead)
+server.use('/v1', V1Routes)
 
 server.all('*', (req, res) => {
   res.status(404).send({
