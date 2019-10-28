@@ -8,6 +8,20 @@ Requirements
 
 - Node LTS
 
+Contributing
+------------
+
+We welcome all contributions by sending PR to this repository.
+
+Need Help ?
+-----------
+
+If you need help with anything, here're following methods:
+
+#### Create an Issue
+
+If you have something you want to discuss in detail, or have hit an issue which you believe others will also have in deployment or development of the system, [opening an issue](https://github.com/rayriffy/rayriffy-blog/issues) is the best way to get help. It creates a permanent resource for others wishing to contribute to conversation.
+
 API
 ----
 
@@ -39,3 +53,8 @@ Get a desired type of avatar
 **Response**
 
 Returns a 200 HTTP status code and a binary of image.
+
+Donations
+---------
+
+If you like my project, please supporting my by [buying some coffee](https://www.buymeacoffee.com/rayriffy)
