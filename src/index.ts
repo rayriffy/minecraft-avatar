@@ -1,19 +1,17 @@
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const express = require('express')
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import express from 'express'
 
 const server = express()
 
-const routeAvatar = require('./routes/avatar')
-const routeCape = require('./routes/cape')
-const routeSkin = require('./routes/skin')
+import routeAvatar from './routes/avatar'
+import routeCape from './routes/cape'
+import routeSkin from './routes/skin'
 
-const routeBody = require('./routes/render/body')
-const routeHead = require('./routes/render/head')
+import routeBody from './routes/render/body'
+import routeHead from './routes/render/head'
 
 server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({extended: true}))
-
 server.use(cors())
 
 server.use((req, res, next) => {
@@ -26,7 +24,7 @@ server.get('/', (req, res) => {
     status: 'success',
     code: 201,
     response: {
-      title: 'Minecraft Avatar Fetching',
+      title: 'Minecraft Avatar API',
       createdBy: '@rayriffy',
       docs: 'https://github.com/rayriffy/minecraft-avatar'
     },
@@ -51,4 +49,4 @@ server.all('*', (req, res) => {
 
 server.listen(3000)
 
-module.exports = server
+export default server

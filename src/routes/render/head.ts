@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 
-const getPayload = require('../../functions/getPayload')
-const getProfile = require('../../functions/getProfile')
+import getPayload from '../../functions/getPayload'
+import getProfile from '../../functions/getProfile'
 
 const router = express.Router()
 
@@ -56,4 +56,4 @@ router.all('/:user', (req, res) => {
   })
 })
 
-module.exports = router
+export default router
