@@ -9,5 +9,5 @@
     "src": "/(.*)",
     "dest": "/src/index.ts"
   }],
-  "regions": ["all"]
+  "regions": ["sin1"]
 }
